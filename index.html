@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBEAR - Internal Access</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="monitor">
+        <div class="scanline"></div>
+        <div class="content">
+            <div id="system-log">
+                [SYSTEM]: MOUNTING ELEVATOR... DONE<br>
+                [SYSTEM]: CONNECTING TO HAND-UNIT... DONE
+            </div>
+            
+            <div class="dialog-box">
+                <h2 id="handunit-text">Welcome, please enter your name on the keypad below.</h2>
+                <div class="keypad-area">
+                    <input type="text" id="username-input" placeholder="TYPE NAME HERE..." autocomplete="off">
+                    <button onclick="processLogin()" id="login-btn">ENTER</button>
+                </div>
+            </div>
+
+            <div id="handunit-correction" style="display:none;">
+                <p>It seems you had some trouble with the keypad. I see what you were trying to type, and I will auto-correct it for you.</p>
+                <p>Welcome, <span class="highlight">Eggs Benedict</span>.</p>
+                <button onclick="enterFacility()">BEGIN FIRST NIGHT</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 模拟 Hand Unit 的强制改名逻辑
+        function processLogin() {
+            const input = document.getElementById('username-input');
+            if(input.value.length > 0) {
+                document.querySelector('.keypad-area').style.display = 'none';
+                document.getElementById('handunit-text').innerText = "SYSTEM ERROR: INVALID INPUT";
+                setTimeout(() => {
+                    document.getElementById('handunit-correction').style.display = 'block';
+                }, 1500);
+            }
+        }
+
+        function enterFacility() {
+            // 第一晚的跳转地址。
+            // 为了防止黑客，建议跳转到第一晚谜题的哈希页面
+            // 假设第一晚的入口文件名为 night1_start.html
+            window.location.href = "night1.html"; 
+        }
+    </script>
+</body>
+</html>

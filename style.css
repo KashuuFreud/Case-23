@@ -1,0 +1,67 @@
+body {
+    background-color: #050505;
+    color: #ffd700; /* Hand Unit 经典的明黄色 */
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.monitor {
+    width: 80%;
+    height: 70%;
+    border: 20px solid #222;
+    border-radius: 50px;
+    background-color: #111;
+    position: relative;
+    padding: 40px;
+    box-shadow: inset 0 0 50px #000, 0 0 20px #ffd70033;
+}
+
+/* 扫描线动画 */
+.scanline {
+    width: 100%;
+    height: 2px;
+    background: rgba(255, 215, 0, 0.1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    animation: moveScanline 4s linear infinite;
+}
+
+@keyframes moveScanline {
+    0% { top: 0; }
+    100% { top: 100%; }
+}
+
+.highlight {
+    color: #ff0000;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+input {
+    background: #222;
+    border: 2px solid #ffd700;
+    color: #ffd700;
+    padding: 10px;
+    font-size: 1.2rem;
+    width: 250px;
+}
+
+button {
+    background: #ffd700;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #fff;
+}
